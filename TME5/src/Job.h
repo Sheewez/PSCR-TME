@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iostream>
+#include <chrono>
+#include <thread>
+
 namespace pr {
 
 class Job {
@@ -10,12 +14,12 @@ public:
 
 // Job concret : exemple
 
-/**
+//point ,couleur, scene, vecteur complet de lumiere , barriere
 class SleepJob : public Job {
 	int calcul (int v) {
 		std::cout << "Computing for arg =" << v << std::endl;
 		// traiter un gros calcul
-		this_thread::sleep_for(1s);
+		std::this_thread::sleep_for(std::chrono::seconds(1));
 		int ret = v % 255;
 		std::cout << "Obtained for arg =" << arg <<  " result " << ret << std::endl;
 		return ret;
@@ -29,6 +33,5 @@ public :
 	}
 	~SleepJob(){}
 };
-**/
 
 }
