@@ -15,12 +15,8 @@ int wait_till_pid(pid_t pid){
 pid_t wait_till_pid(pid_t pid,int sec) {
 	static bool timeout ;
 	timeout = false;
-	signal(SIGALRM, [](int){
-		std::cout << "received SIGALRM" << std::endl; timeout =true;
-	});
-	signal(SIGCHLD, [](int){
-		std::cout << "received SIGCHLD" << std::endl;
-	});
+	signal(SIGALRM, [](int){std::cout << "received SIGALRM" << std::endl; timeout =true;});
+	signal(SIGCHLD, [](int){std::cout << "received SIGCHLD" << std::endl;});
 
 	alarm(sec);
 	sigset_t set;
@@ -42,13 +38,13 @@ pid_t wait_till_pid(pid_t pid,int sec) {
 		}
 	}
 }
-int main() {
-	pid_t pid = fork();
-	if(pid==0) {
-		sleep(5);
-	}else{
-		signal(SIGINT, [](int){});
-		pid_t res = wait_till_pid(pid, 3);
-
-	}
-}
+//int main() {
+//	pid_t pid = fork();
+//	if(pid==0) {
+//		sleep(5);
+//	}else{
+//		signal(SIGINT, [](int){});
+//		pid_t res = wait_till_pid(pid, 3);
+//
+//	}
+//}
