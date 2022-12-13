@@ -39,7 +39,7 @@ public :
 };
 
 int main() {
-
+	;
 	pr::TCPServer server(new IncrementServer());
 
 	server.startServer(1664);
