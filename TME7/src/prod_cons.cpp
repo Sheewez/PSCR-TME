@@ -22,25 +22,25 @@ void consomateur (Stack<char> * stack) {
 	}
 }
 
-int main () {
-	Stack<char> * s = new Stack<char>();
-
-	pid_t pp = fork();
-	if (pp==0) {
-		producteur(s);
-		return 0;
-	}
-
-	pid_t pc = fork();
-	if (pc==0) {
-		consomateur(s);
-		return 0;
-	}
-
-	wait(0);
-	wait(0);
-
-	delete s;
-	return 0;
-}
-
+//int main () {
+//	Stack<char> * s = new Stack<char>();
+//
+//	pid_t pp = fork();
+//	if (pp==0) {
+//		producteur(s);
+//		return 0;
+//	}
+//
+//	pid_t pc = fork();
+//	if (pc==0) {
+//		consomateur(s);
+//		return 0;
+//	}
+//
+//	wait(0);
+//	wait(0);
+//
+//	delete s;
+//	return 0;
+//}
+//
